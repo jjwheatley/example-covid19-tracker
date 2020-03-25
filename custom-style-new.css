@@ -1,0 +1,38 @@
+body{
+    background-color: whitesmoke;
+}
+
+:root {
+    /* --line-chart-color: whitesmoke; */
+    --grey: #d3d3d3;
+    --whitesmoke:whitesmoke;
+    --pink: #E8336D;
+}
+
+.annotation-subject{
+    fill: var(--pink);
+}
+
+.annotation-subject > .badge-text {
+    fill: var(--whitesmoke);
+}
+.badge-text {
+    fill: var(--pink);
+}
+.annotation-subject >  text {
+    fill: var(--whitesmoke);
+}
+
+.annotation-legend > .annotations > text{
+    fill: var(--pink);
+}
+
+svg {
+    font-family: 'Lato';
+}
+
+svg text.legend{
+    text-anchor: start;
+    fill: var(--pink);
+    /* fill: var(--annotation-color) */
+}
