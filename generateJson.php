@@ -21,11 +21,11 @@ function generateJson(){
             // var_dump($data);exit();
             if (isset($jsonData[$data[1]][$data[0]])) {
                 // var_dump('test');exit();
-                $new =  (int) $data[7] + (int) $jsonData[$data[1]][$data[0]];
+                $new =  (int) $data[6] + (int) $jsonData[$data[1]][$data[0]];
                 // var_dump($new);exit();
                 $jsonData[$data[1]][$data[0]] = $new;
             } else {
-                $jsonData[$data[1]][$data[0]] = $data[7];
+                $jsonData[$data[1]][$data[0]] = $data[6];
             }
         
         }
