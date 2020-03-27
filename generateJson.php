@@ -36,6 +36,7 @@ function generateJson(){
         'Spain' => ['color' => 'DarkGreen', 'population' => 46754778],
         'United Kingdom' => ['color' => 'Red', 'population' => 67886011],
         'Germany' => ['color' => 'Brown', 'population' => 83783942],
+        // 'US' => ['color' => 'Pink', 'population' => 331002651],
     ];
     krsort($countriesShownSettings);
     $order = 0;
