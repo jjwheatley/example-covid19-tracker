@@ -28,14 +28,14 @@ function generateJson(){
 
     $countryList = array_flip(array_flip($countryList));
     $countriesShownSettings = [ 
-        'China' => ['color' => 'Black'],
-        'France' => ['color' => 'Blue'],  
-        'Italy' => ['color' => 'Purple'],
-        'Korea, South' => ['color' => 'Grey'],
-        'Netherlands' => ['color' => 'Orange'], 
-        'Spain' => ['color' => 'DarkGreen'],
-        'United Kingdom' => ['color' => 'Red'],
-        'Germany' => ['color' => 'Brown'],
+        'China' => ['color' => 'Black', 'population' => 1439323776],
+        'France' => ['color' => 'Blue', 'population' => 65273511],  
+        'Italy' => ['color' => 'Purple', 'population' => 60484644],
+        'Korea, South' => ['color' => 'Grey', 'population' => 51269185],
+        'Netherlands' => ['color' => 'Orange', 'population' => 17134872], 
+        'Spain' => ['color' => 'DarkGreen', 'population' => 46754778],
+        'United Kingdom' => ['color' => 'Red', 'population' => 67886011],
+        'Germany' => ['color' => 'Brown', 'population' => 83783942],
     ];
     krsort($countriesShownSettings);
     $order = 0;
@@ -67,6 +67,7 @@ function generateJson(){
                                 'date' => $key,
                                 'day' => $counter,
                                 'deaths' => (int) $value,
+                                'deathsPerMillion' => (int) $value / (int) $countriesShownSettings[$country]['population'] * 1000000,
                                 'deathsOnDay' => (int) $value - $totalDead,
                             ];
                             if($row['deaths'] >= 10){
