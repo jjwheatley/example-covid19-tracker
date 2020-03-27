@@ -8,26 +8,20 @@ function generateJson(){
     $jsonData = [];
     $countryList = [];
     $previousCountry = "";
-    $previousDeaths = 0;
-    while (($data = fgetcsv($file)) !== FALSE) {
-        if($count > 0){
-            $countryList[] = $previousCountry = preg_replace('/[\*]+/', '', $data[1]);
 
-            // $row = [
-            //     'Country' => $data[1],
-            //     'Date' => $data[0],
-            //     'Deaths' => $data[7]
-            // ];
-            // var_dump($data);exit();
-            if (isset($jsonData[$data[1]][$data[0]])) {
-                // var_dump('test');exit();
-                $new =  (int) $data[6] + (int) $jsonData[$data[1]][$data[0]];
-                // var_dump($new);exit();
-                $jsonData[$data[1]][$data[0]] = $new;
+    while (($data = fgetcsv($file)) !== FALSE) {
+        $country = $data[1];
+        $date = $data[0];
+        $deaths = $data[6];
+        if($count > 0){
+            $countryList[] = $previousCountry = preg_replace('/[\*]+/', '', $country);
+
+            if (isset($jsonData[$country][$date])) {
+                $newDeaths =  (int) $deaths + (int) $jsonData[$country][$date];
+                $jsonData[$country][$date] = $newDeaths;
             } else {
-                $jsonData[$data[1]][$data[0]] = $data[6];
-            }
-        
+                $jsonData[$country][$date] = (int) $deaths;
+            }        
         }
         $count++;
     }
