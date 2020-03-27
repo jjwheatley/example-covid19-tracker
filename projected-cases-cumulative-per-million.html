@@ -55,7 +55,7 @@
         .attr('alignment-baseline', 'middle')
         .attr('x', width)
         .attr('dx', '.5em')
-        .attr('y', d => y(Math.pow(1.7,d.order)*5000))
+        .attr('y', d => y( (d.order*300)+2000 ))
 
     tipBox = chart.append('rect')
         .attr('width', width)
