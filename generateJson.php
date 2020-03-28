@@ -12,7 +12,7 @@ function generateJson(){
     while (($data = fgetcsv($file)) !== FALSE) {
         $country = $data[1];
         $date = $data[0];
-        $deaths = $data[6];
+        $deaths = $data[7];
         if($count > 0){
             $countryList[] = $previousCountry = preg_replace('/[\*]+/', '', $country);
 
