@@ -16,7 +16,7 @@
 
   // Define the scales and tell D3 how to draw the line
   const x = d3.scaleLinear().domain([0, 70]).range([0, width]);     
-  const y = d3.scaleLinear().domain([0, 5000]).range([height, 0]);
+  const y = d3.scaleLinear().domain([0, 6000]).range([height, 0]);
   const line = d3.line().x(d => x(d.day)).y(d => y(d.deathsPerMillion/fatalityRate*100));
 
   const chart = d3.select('svg').append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -26,10 +26,10 @@
 
   // Add the axes and a title
   const xAxis = d3.axisBottom(x).ticks(15).tickFormat(d3.format('.4'));
-  const yAxis = d3.axisLeft(y).ticks(3).tickFormat(d3.format('.2s'));
+  const yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format('.2s'));
   chart.append('g').call(yAxis); 
   chart.append('g').attr('transform', 'translate(0,' + height + ')').call(xAxis);
-  chart.append('text').html('Projected Number of Cases Per Mllion (based on deaths & assuming a fatality rate of 3%)').attr('x', 200);
+  chart.append('text').html('Projected Number of Cases Per Million (based on deaths & assuming a fatality rate of 3%)').attr('x', 200);
   // setAnnotations();
 
   // Load the data and draw a chart
@@ -55,7 +55,7 @@
         .attr('alignment-baseline', 'middle')
         .attr('x', width)
         .attr('dx', '.5em')
-        .attr('y', d => y( (d.order*300)+2000 ))
+        .attr('y', d => y( (d.order*350)+2200 ))
 
     tipBox = chart.append('rect')
         .attr('width', width)
