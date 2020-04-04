@@ -91,4 +91,4 @@ $returnedArray = generateJson();
 $NewJSON = fopen('covid.json', 'w');
 fwrite($NewJSON, json_encode($returnedArray));
 fclose($NewJSON);
-echo "Finished!\n";
+echo "JSON Generation Finished!\n";
