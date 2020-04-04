@@ -1,0 +1,3 @@
+[submodule "DbConnector"]
+	path = data/datasets-covid-19
+	url = https://github.com/datasets/covid-19
