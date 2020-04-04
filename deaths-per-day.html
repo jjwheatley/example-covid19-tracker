@@ -12,8 +12,8 @@
   const height = 400 - margin.top - margin.bottom;
 
   // Define the scales and tell D3 how to draw the line
-  const x = d3.scaleLinear().domain([0, 70]).range([0, width]);     
-  const y = d3.scaleLinear().domain([0, 1000]).range([height, 0]);
+  const x = d3.scaleLinear().domain([0, 80]).range([0, width]);     
+  const y = d3.scaleLinear().domain([0, 1500]).range([height, 0]);
   const line = d3.line().x(d => x(d.day)).y(d => y(d.deathsOnDay));
 
   const chart = d3.select('svg').append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -23,7 +23,7 @@
 
   // Add the axes and a title
   const xAxis = d3.axisBottom(x).ticks(15).tickFormat(d3.format('.4'));
-  const yAxis = d3.axisLeft(y).ticks(5).tickFormat(d3.format('.2s'));
+  const yAxis = d3.axisLeft(y).ticks(11).tickFormat(d3.format('.2s'));
   chart.append('g').call(yAxis); 
   chart.append('g').attr('transform', 'translate(0,' + height + ')').call(xAxis);
   chart.append('text').html('Deaths per Day (since reaching 10 deaths total)').attr('x', 200);
@@ -52,7 +52,7 @@
         .attr('alignment-baseline', 'middle')
         .attr('x', width)
         .attr('dx', '.5em')
-        .attr('y', d => y( (d.order*55)+450 ))
+        .attr('y', d => y( (d.order*70)+800 ))
 
     tipBox = chart.append('rect')
         .attr('width', width)
