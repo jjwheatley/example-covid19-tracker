@@ -2,7 +2,7 @@
 ini_set('max_execution_time', 300);
 set_time_limit(300);
 
-function generateJson(){
+function generateCovidJson(){
     $file = fopen("data/datasets-covid-19/data/time-series-19-covid-combined.csv","r");
     $count = 0;
     $jsonData = [];
@@ -27,18 +27,8 @@ function generateJson(){
     }
 
     $countryList = array_flip(array_flip($countryList));
-    $countriesShownSettings = [ 
-        'China' => ['color' => 'Black', 'population' => 1439323776],
-        'France' => ['color' => 'Blue', 'population' => 65273511],  
-        'Italy' => ['color' => 'Purple', 'population' => 60484644],
-        'Korea, South' => ['color' => 'Grey', 'population' => 51269185],
-        'Netherlands' => ['color' => 'Orange', 'population' => 17134872], 
-        'Spain' => ['color' => 'DarkGreen', 'population' => 46754778],
-        'United Kingdom' => ['color' => 'Red', 'population' => 67886011],
-        'Germany' => ['color' => 'Brown', 'population' => 83783942],
-        // 'US' => ['color' => 'Pink', 'population' => 331002651],
-    ];
-    krsort($countriesShownSettings);
+    $countriesShownSettings = getCountries();
+
     $order = 0;
     foreach($countriesShownSettings as $key => $v){
         $order++;
@@ -85,10 +75,33 @@ function generateJson(){
             $superstructure[] = $structure;
         }
     }
-    return $superstructure;
+    
+    writeToJson('covid', $superstructure);
 }
-$returnedArray = generateJson();
-$NewJSON = fopen('covid.json', 'w');
-fwrite($NewJSON, json_encode($returnedArray));
-fclose($NewJSON);
-echo "JSON Generation Finished!\n";
+
+function writeToJson($filename, $content){
+    
+    $file = fopen($filename.'.json', 'w');
+    fwrite($file, json_encode($content));
+    fclose($file);
+    echo $filename.".json Generation Finished!\n";
+}
+
+function getCountries(){
+    $countries = [ 
+        'China' => ['color' => 'Black', 'population' => 1439323776],
+        'France' => ['color' => 'Blue', 'population' => 65273511],  
+        'Italy' => ['color' => 'Purple', 'population' => 60484644],
+        'Korea, South' => ['color' => 'Grey', 'population' => 51269185],
+        'Netherlands' => ['color' => 'Orange', 'population' => 17134872], 
+        'Spain' => ['color' => 'DarkGreen', 'population' => 46754778],
+        'United Kingdom' => ['color' => 'Red', 'population' => 67886011],
+        'Germany' => ['color' => 'Brown', 'population' => 83783942],
+        // 'US' => ['color' => 'Pink', 'population' => 331002651],
+    ];
+    krsort($countries);
+
+    return $countries;
+}
+
+generateCovidJson();
