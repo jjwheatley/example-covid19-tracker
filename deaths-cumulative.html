@@ -12,7 +12,7 @@
   const height = 400 - margin.top - margin.bottom;
 
   // Define the scales and tell D3 how to draw the line
-  const x = d3.scaleLinear().domain([0, 80]).range([0, width]);     
+  const x = d3.scaleLinear().domain([0, 120]).range([0, width]);     
   const y = d3.scaleLog().domain([10, 100000]).range([height, 0]);
   const line = d3.line().x(d => x(d.day)).y(d => y(d.deaths));
 
