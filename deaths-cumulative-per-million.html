@@ -13,7 +13,7 @@
 
   // Define the scales and tell D3 how to draw the line
   const x = d3.scaleLinear().domain([0, 120]).range([0, width]);     
-  const y = d3.scaleLinear().domain([0, 450]).range([height, 0]);
+  const y = d3.scaleLinear().domain([0, 650]).range([height, 0]);
   const line = d3.line().x(d => x(d.day)).y(d => y(d.deathsPerMillion));
 
   const chart = d3.select('svg').append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -52,7 +52,7 @@
         .attr('alignment-baseline', 'middle')
         .attr('x', width)
         .attr('dx', '.5em')
-        .attr('y', d => y( (d.order*20  )+250 ))
+        .attr('y', d => y( (d.order*32 )+350 ))
     tipBox = chart.append('rect')
         .attr('width', width)
         .attr('height', height)
